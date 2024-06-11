@@ -1,6 +1,7 @@
 'use strict';
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
+
 import errorSign from '../img/errorSign.svg';
 
 import iziToast from 'izitoast';
@@ -66,12 +67,11 @@ refs.buttonStartEl.addEventListener('click', e => {
   const intervalId = setInterval(() => {
     const currentTime = Date.now();
     const diff = userSelectedDate - currentTime;
-    let timeObj = convertMs(diff);
-    console.log(timeObj);
-    refs.daysSpanEl.textContent = timeObj.days.toString().padStart(2, '0');
-    refs.hoursSpanEl.textContent = timeObj.hours.toString().padStart(2, '0');
-    refs.minSpanEl.textContent = timeObj.minutes.toString().padStart(2, '0');
-    refs.secSpanEl.textContent = timeObj.seconds.toString().padStart(2, '0');
+    let timeObj = addLeadingZero(convertMs(diff));
+    refs.daysSpanEl.textContent = timeObj.days;
+    refs.hoursSpanEl.textContent = timeObj.hours;
+    refs.minSpanEl.textContent = timeObj.minutes;
+    refs.secSpanEl.textContent = timeObj.seconds;
   }, 1000);
 
   setTimeout(() => {
@@ -85,4 +85,12 @@ function makeElemDisabled(elem) {
 }
 function removeDisabled(elem) {
   elem.removeAttribute('disabled');
+}
+
+function addLeadingZero(obj) {
+  const days = obj.days.toString().padStart(2, '0');
+  const hours = obj.hours.toString().padStart(2, '0');
+  const minutes = obj.minutes.toString().padStart(2, '0');
+  const seconds = obj.seconds.toString().padStart(2, '0');
+  return { days, hours, minutes, seconds };
 }
