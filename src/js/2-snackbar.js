@@ -6,7 +6,19 @@ import rejectSign from '../img/bi_x-octagon.svg';
 
 const formEl = document.querySelector('.form');
 const radioElems = document.querySelectorAll('fieldset input');
-console.log(radioElems);
+const inputDelayEl = formEl.elements.delay;
+const inputStateEl = formEl.elements.state;
+const labelEl = document.querySelector('label');
+const fieldsetEl = document.querySelector('fieldset');
+const btnEl = document.querySelector('button');
+
+labelEl.classList.add('form-label');
+inputDelayEl.classList.add('input-delay');
+inputStateEl[0].classList.add('radio-fulfiled');
+inputStateEl[1].classList.add('radio-rejected');
+fieldsetEl.classList.add('fieldset');
+btnEl.classList.add('submit-btn');
+
 formEl.addEventListener('submit', event => {
   event.preventDefault();
   const delayValue = formEl.elements.delay.value;

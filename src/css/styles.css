@@ -11,7 +11,7 @@
   box-sizing: border-box;
 }
 :root {
-  font-family: Monserat, Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
@@ -24,6 +24,19 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+.nav-link {
+  display: block;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+  transition: background-color 500ms ease-in-out;
+}
+
+.nav-link:hover {
+  color: #4e75ff;
 }
 
 .data-input {
@@ -121,4 +134,91 @@
 .start-btn:disabled {
   background-color: #cfcfcf;
   color: #989898;
+}
+.form {
+  margin-left: 156px;
+}
+.form-label {
+  display: block;
+  text-transform: none;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+}
+
+.input-delay {
+  display: block;
+  outline: none;
+  border: 1px solid #808080;
+  border-radius: 4px;
+  width: 360px;
+  height: 40px;
+  padding-left: 8px;
+  padding-right: 16px;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+}
+.input-delay::-webkit-outer-spin-button,
+.input-delay::-webkit-inner-spin-button {
+  width: 16px;
+  height: 32px;
+  opacity: 0;
+  visibility: hidden;
+}
+.input-delay:hover {
+  border-color: black;
+}
+.input-delay:focus {
+  border-color: #4e75ff;
+}
+.input-delay:hover::-webkit-outer-spin-button,
+.input-delay:hover::-webkit-inner-spin-button {
+  opacity: 1;
+  visibility: visible;
+}
+.fieldset {
+  display: flex;
+  width: 360px;
+  height: 78px;
+  outline: none;
+  border: 1px solid #808080;
+  border-radius: 4px;
+  margin-bottom: 24px;
+}
+.form label {
+  margin-bottom: 16px;
+}
+
+.radio-fulfiled,
+.radio-rejected {
+  margin-right: 8px;
+}
+
+.fieldset label:nth-child(2) {
+  margin-right: 48px;
+}
+
+.submit-btn {
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  width: 360px;
+  height: 40px;
+  background: #4e75ff;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #fff;
+  text-align: center;
+  transition: background-color 500ms ease-in-out;
+}
+
+.submit-btn:hover {
+  background: #6c8cff;
 }
