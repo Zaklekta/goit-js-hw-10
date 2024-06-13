@@ -14,8 +14,6 @@ const btnEl = document.querySelector('button');
 
 labelEl.classList.add('form-label');
 inputDelayEl.classList.add('input-delay');
-inputStateEl[0].classList.add('radio-fulfiled');
-inputStateEl[1].classList.add('radio-rejected');
 fieldsetEl.classList.add('fieldset');
 btnEl.classList.add('submit-btn');
 
@@ -27,48 +25,47 @@ formEl.addEventListener('submit', event => {
     if (radioElems[i].checked) {
       checkedValue = radioElems[i].value;
     }
-    break;
   }
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
       if (checkedValue == 'fulfilled') {
-        resolve(
-          iziToast.success({
-            title: 'OK',
-            message: `Fulfilled promise in ${delayValue}ms`,
-            position: 'topCenter',
-            iconUrl: successSign,
-            backgroundColor: 'rgb(89, 161, 13)',
-            titleColor: 'rgb(255, 255, 255)',
-            messageColor: 'rgb(255, 255, 255)',
-            messageSize: '16',
-            iconColor: 'rgb(255, 255, 255)',
-            theme: 'dark',
-            progressBarColor: 'rgb(255, 255, 255)',
-          })
-        );
+        resolve(delayValue);
       } else {
-        reject(
-          iziToast.error({
-            title: '',
-            message: `Rejected promise in ${delayValue}ms`,
-            iconUrl: rejectSign,
-            backgroundColor: 'rgb(255, 99, 71)',
-            titleColor: 'rgb(255, 255, 255)',
-            messageColor: 'rgb(255, 255, 255)',
-            messageSize: '16',
-            iconColor: 'rgb(255, 255, 255)',
-            theme: 'dark',
-            progressBarColor: 'rgb(255, 255, 255)',
-            position: 'topCenter',
-          })
-        );
+        reject(delayValue);
       }
     }, delayValue);
   });
 
   promise
-    .then(result => console.log(result))
-    .catch(error => console.log(error));
+    .then(result =>
+      iziToast.success({
+        title: 'OK',
+        message: `Fulfilled promise in ${result}ms`,
+        position: 'topCenter',
+        iconUrl: successSign,
+        backgroundColor: 'rgb(89, 161, 13)',
+        titleColor: 'rgb(255, 255, 255)',
+        messageColor: 'rgb(255, 255, 255)',
+        messageSize: '16',
+        iconColor: 'rgb(255, 255, 255)',
+        theme: 'dark',
+        progressBarColor: 'rgb(255, 255, 255)',
+      })
+    )
+    .catch(error =>
+      iziToast.error({
+        title: '',
+        message: `Rejected promise in ${error}ms`,
+        iconUrl: rejectSign,
+        backgroundColor: 'rgb(255, 99, 71)',
+        titleColor: 'rgb(255, 255, 255)',
+        messageColor: 'rgb(255, 255, 255)',
+        messageSize: '16',
+        iconColor: 'rgb(255, 255, 255)',
+        theme: 'dark',
+        progressBarColor: 'rgb(255, 255, 255)',
+        position: 'topCenter',
+      })
+    );
   formEl.reset();
 });

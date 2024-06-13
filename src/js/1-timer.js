@@ -64,6 +64,7 @@ flatpickr('#datetime-picker', options);
 refs.buttonStartEl.addEventListener('click', e => {
   makeElemDisabled(refs.inputEl);
   makeElemDisabled(refs.buttonStartEl);
+
   const intervalId = setInterval(() => {
     const currentTime = Date.now();
     const diff = userSelectedDate - currentTime;
@@ -72,12 +73,11 @@ refs.buttonStartEl.addEventListener('click', e => {
     refs.hoursSpanEl.textContent = timeObj.hours;
     refs.minSpanEl.textContent = timeObj.minutes;
     refs.secSpanEl.textContent = timeObj.seconds;
-  }, 1000);
-
-  setTimeout(() => {
-    clearInterval(intervalId);
-    removeDisabled(refs.inputEl);
-  }, userSelectedDate - Date.now());
+    if (diff === 0 || diff < 0) {
+      clearInterval(intervalId);
+      removeDisabled(refs.inputEl);
+    }
+  });
 });
 
 function makeElemDisabled(elem) {
